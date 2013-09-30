@@ -1,4 +1,4 @@
 EasyCombos
 ==========
 
-Test Program
+Test
