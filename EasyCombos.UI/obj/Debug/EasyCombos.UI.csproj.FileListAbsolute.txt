@@ -1,0 +1,11 @@
+C:\EasyCombo\EasyCombos.UI\obj\Debug\EasyCombos.UI.csprojResolveAssemblyReference.cache
+C:\EasyCombo\EasyCombos.UI\bin\CodeFirstServices.dll
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.DAL.dll
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.DAL.pdb
+C:\EasyCombo\EasyCombos.UI\bin\CodeFirstServices.pdb
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.UI.dll
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.UI.pdb
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.CodeFirstEntities.dll
+C:\EasyCombo\EasyCombos.UI\bin\EasyCombos.CodeFirstEntities.pdb
+C:\EasyCombo\EasyCombos.UI\obj\Debug\EasyCombos.UI.dll
+C:\EasyCombo\EasyCombos.UI\obj\Debug\EasyCombos.UI.pdb

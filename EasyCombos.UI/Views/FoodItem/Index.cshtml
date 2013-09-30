@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EasyCombos.UI.Models.FoodItemModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            FoodCategory
+        </th>
+        <th>
+            PricePerUnit
+        </th>
+        <th>
+            QunatityOnHand
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            OfferedDiscount
+        </th>
+        <th>
+            OfferType
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FoodCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PricePerUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QunatityOnHand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfferedDiscount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfferType.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FoodItemId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FoodItemId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FoodItemId })
+        </td>
+    </tr>
+}
+
+</table>

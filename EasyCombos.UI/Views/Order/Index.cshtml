@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EasyCombos.UI.Models.OrderModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            CustomerName
+        </th>
+        <th>
+            DateTime
+        </th>
+        <th>
+            AdditionalDiscount
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalDiscount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,5 @@
+C:\EasyCombo\Dlls\CodeFirstServices.dll
+C:\EasyCombo\Dlls\CodeFirstServices.pdb
+C:\EasyCombo\EasyCombos.Services\obj\Debug\EasyCombos.Services.csprojResolveAssemblyReference.cache
+C:\EasyCombo\EasyCombos.Services\obj\Debug\CodeFirstServices.dll
+C:\EasyCombo\EasyCombos.Services\obj\Debug\CodeFirstServices.pdb

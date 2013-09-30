@@ -1,0 +1,50 @@
+﻿@model EasyCombos.UI.Models.FoodItemModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FoodItem</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">FoodCategory</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FoodCategory.Name)
+    </div>
+
+    <div class="display-label">PricePerUnit</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PricePerUnit)
+    </div>
+
+    <div class="display-label">QunatityOnHand</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QunatityOnHand)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">OfferedDiscount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OfferedDiscount)
+    </div>
+
+    <div class="display-label">OfferType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OfferType.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.FoodItemId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

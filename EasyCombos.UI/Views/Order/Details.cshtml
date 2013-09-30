@@ -1,0 +1,31 @@
+﻿@model EasyCombos.UI.Models.OrderModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Order</legend>
+
+    <div class="display-label">CustomerName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CustomerName)
+    </div>
+
+    <div class="display-label">DateTime</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateTime)
+    </div>
+
+    <div class="display-label">AdditionalDiscount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AdditionalDiscount)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.OrderId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

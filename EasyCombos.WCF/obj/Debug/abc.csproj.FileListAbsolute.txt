@@ -1,0 +1,7 @@
+C:\EasyCombos\EasyCombos.WCF\bin\Debug\EasyCombos.WCF.dll.config
+C:\EasyCombos\EasyCombos.WCF\bin\Debug\EasyCombos.WCF.dll
+C:\EasyCombos\EasyCombos.WCF\bin\Debug\EasyCombos.WCF.pdb
+C:\EasyCombos\EasyCombos.WCF\bin\Debug\EntityFramework.dll
+C:\EasyCombos\EasyCombos.WCF\bin\Debug\EntityFramework.xml
+C:\EasyCombos\EasyCombos.WCF\obj\Debug\EasyCombos.WCF.dll
+C:\EasyCombos\EasyCombos.WCF\obj\Debug\EasyCombos.WCF.pdb

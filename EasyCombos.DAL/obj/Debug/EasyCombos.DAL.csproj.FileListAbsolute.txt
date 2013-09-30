@@ -1,0 +1,5 @@
+C:\EasyCombo\Dlls\EasyCombos.DAL.dll
+C:\EasyCombo\Dlls\EasyCombos.DAL.pdb
+C:\EasyCombo\EasyCombos.DAL\obj\Debug\EasyCombos.DAL.csprojResolveAssemblyReference.cache
+C:\EasyCombo\EasyCombos.DAL\obj\Debug\EasyCombos.DAL.dll
+C:\EasyCombo\EasyCombos.DAL\obj\Debug\EasyCombos.DAL.pdb

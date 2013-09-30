@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EasyCombosModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EasyCombosEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="FoodCategories" EntityType="EasyCombosModel.FoodCategory" />
+    <EntitySet Name="FoodItems" EntityType="EasyCombosModel.FoodItem" />
+    <EntitySet Name="OfferTypes" EntityType="EasyCombosModel.OfferType" />
+    <EntitySet Name="Orders" EntityType="EasyCombosModel.Order" />
+    <EntitySet Name="sysdiagrams" EntityType="EasyCombosModel.sysdiagram" />
+    <AssociationSet Name="FK_FoodItem_FoodCategories" Association="EasyCombosModel.FK_FoodItem_FoodCategories">
+      <End Role="FoodCategory" EntitySet="FoodCategories" />
+      <End Role="FoodItem" EntitySet="FoodItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FoodItem_OfferType" Association="EasyCombosModel.FK_FoodItem_OfferType">
+      <End Role="OfferType" EntitySet="OfferTypes" />
+      <End Role="FoodItem" EntitySet="FoodItems" />
+    </AssociationSet>
+    <AssociationSet Name="Order_FoodItem" Association="EasyCombosModel.Order_FoodItem">
+      <End Role="FoodItem" EntitySet="FoodItems" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <EntitySet Name="UserProfiles" EntityType="EasyCombosModel.UserProfile" />
+    <EntitySet Name="webpages_Membership" EntityType="EasyCombosModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="EasyCombosModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="EasyCombosModel.webpages_Roles" />
+    <AssociationSet Name="webpages_UsersInRoles" Association="EasyCombosModel.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FoodCategory">
+    <Key>
+      <PropertyRef Name="FoodCategoryId" />
+    </Key>
+    <Property Name="FoodCategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="FoodItems" Relationship="EasyCombosModel.FK_FoodItem_FoodCategories" FromRole="FoodCategory" ToRole="FoodItem" />
+  </EntityType>
+  <EntityType Name="FoodItem">
+    <Key>
+      <PropertyRef Name="FoodItemId" />
+    </Key>
+    <Property Type="Int32" Name="FoodItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="FoodCategoryId" Nullable="false" />
+    <Property Type="Double" Name="PricePerUnit" Nullable="false" />
+    <Property Type="Int32" Name="QunatityOnHand" Nullable="false" />
+    <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="OfferedDiscount" Nullable="false" />
+    <Property Type="Int32" Name="OfferTypeId" Nullable="false" />
+    <NavigationProperty Name="FoodCategory" Relationship="EasyCombosModel.FK_FoodItem_FoodCategories" FromRole="FoodItem" ToRole="FoodCategory" />
+    <NavigationProperty Name="OfferType" Relationship="EasyCombosModel.FK_FoodItem_OfferType" FromRole="FoodItem" ToRole="OfferType" />
+    <NavigationProperty Name="Orders" Relationship="EasyCombosModel.Order_FoodItem" FromRole="FoodItem" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="OfferType">
+    <Key>
+      <PropertyRef Name="OfferTypeId" />
+    </Key>
+    <Property Type="Int32" Name="OfferTypeId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FoodItems" Relationship="EasyCombosModel.FK_FoodItem_OfferType" FromRole="OfferType" ToRole="FoodItem" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Type="Int32" Name="OrderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="DateTime" Nullable="false" Precision="3" />
+    <Property Type="Double" Name="AdditionalDiscount" Nullable="false" />
+    <NavigationProperty Name="FoodItems" Relationship="EasyCombosModel.Order_FoodItem" FromRole="Order" ToRole="FoodItem" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_FoodItem_FoodCategories">
+    <End Type="EasyCombosModel.FoodCategory" Role="FoodCategory" Multiplicity="1" />
+    <End Type="EasyCombosModel.FoodItem" Role="FoodItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodCategory">
+        <PropertyRef Name="FoodCategoryId" />
+      </Principal>
+      <Dependent Role="FoodItem">
+        <PropertyRef Name="FoodCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoodItem_OfferType">
+    <End Type="EasyCombosModel.OfferType" Role="OfferType" Multiplicity="1" />
+    <End Type="EasyCombosModel.FoodItem" Role="FoodItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OfferType">
+        <PropertyRef Name="OfferTypeId" />
+      </Principal>
+      <Dependent Role="FoodItem">
+        <PropertyRef Name="OfferTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_FoodItem">
+    <End Type="EasyCombosModel.FoodItem" Role="FoodItem" Multiplicity="*" />
+    <End Type="EasyCombosModel.Order" Role="Order" Multiplicity="*" />
+  </Association>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="webpages_Roles" Relationship="EasyCombosModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Precision="3" />
+    <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsConfirmed" />
+    <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+    <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Type="Int32" Name="RoleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserProfiles" Relationship="EasyCombosModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+  </EntityType>
+  <Association Name="webpages_UsersInRoles">
+    <End Type="EasyCombosModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
+    <End Type="EasyCombosModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+  </Association>
+</Schema>
